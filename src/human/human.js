@@ -66,6 +66,7 @@ class Human extends React.Component {
     let bottom = this.props.bottom;
     let posture = this.props.posture;
     let direction = this.props.direction;
+    let indicators = this.props.indicators;
 
     let height = setHeightFromSizeAndPosture(size, posture);
     let heightAdjustmentFromPosture = setHeightAdjustmentFromPosture(posture);
@@ -99,12 +100,15 @@ class Human extends React.Component {
           transform={`${horizontalDirectionModifier} ${heightAdjustmentFromPosture}`}>
             <g id="HEAD" transform="translate(82.000000, 0.000000)">
               <Head />
+              {indicators && <div class="blob"></div>}
             </g>
             <g id="BOTTOM" transform="translate(0.000000, 187.000000)">
               <Bottom />
+              {indicators && <div class="blob"></div>}
             </g>
             <g id="TORSO" transform="translate(22.000000, 82.000000)">
               <Torso />
+              {indicators && <div class="blob"></div>}
             </g>
           </g>
         </g>
@@ -115,6 +119,7 @@ class Human extends React.Component {
 
 Human.propTypes = {
   size: PropTypes.number,
+  indicators: PropTypes.bool,
 
   head: PropTypes.string,
   torso: PropTypes.string,
